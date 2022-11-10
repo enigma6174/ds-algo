@@ -1,4 +1,4 @@
-class ListImplementation:
+class Array:
     def __init__(self):
         self.length = 0
         self.buffer = []
@@ -16,7 +16,7 @@ class ListImplementation:
         if i < 0:
             raise Exception("negative indexing not allowed")
 
-    # Get the element at index i
+    # Get the element at index i - O(1)
     def at(self, index):
         try:
             self.validate_index(index)
@@ -24,13 +24,13 @@ class ListImplementation:
         except Exception as e:
             print(e)
 
-    # Insert an element at the end of the array
+    # Insert an element at the end of the array - O(1)
     def push(self, item):
         self.buffer.append(item)
         self.length += 1
         return self.buffer
 
-    # Remove an element from the end of the array
+    # Remove an element from the end of the array - O(1) 
     def pop(self):
         try:
             self.validate_array()
@@ -45,7 +45,7 @@ class ListImplementation:
         except Exception as e:
             print(e)
 
-    # Insert an element 
+    # Insert an element at index i - O(n) 
     def insert(self, item, index):
         try:
             # If the index is last index or array is empty direct insertion
@@ -76,7 +76,7 @@ class ListImplementation:
         except Exception as e:
             print(e)
 
-    # Method to remove item from index i
+    # Method to remove item from index i - O(n)
     def remove(self, index):
         try:
             # Validate the array and index
