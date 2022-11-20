@@ -1,4 +1,4 @@
-from main import HashMap
+from python.data_structure.hashmap import HashMap
 
 h = HashMap()
 

@@ -3,7 +3,7 @@ words = ["the", "quick", "brown", "fox"]
 print(words)
 
 # Accessing an item from the list
-item = words[0] # O(1)
+item = words[0]  # O(1)
 print(item)
 
 # Traversing a list - O(n)

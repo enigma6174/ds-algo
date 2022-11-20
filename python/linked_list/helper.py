@@ -1,4 +1,4 @@
-from main import LinkedList, DoublyLinkedList
+from python.data_structure.linkedlist import LinkedList, DoublyLinkedList
 
 
 # Helper function to test the singly linked list

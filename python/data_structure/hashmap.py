@@ -75,7 +75,6 @@ class HashMap:
         if found_key:
             bucket.pop(index)
 
-
     # Return a string representation of the hash map
     def __str__(self):
         return "".join(str(item) for item in self.hash_table)

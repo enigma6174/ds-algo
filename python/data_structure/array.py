@@ -30,11 +30,10 @@ class Array:
         self.length += 1
         return self.buffer
 
-    # Remove an element from the end of the array - O(1) 
+    # Remove an element from the end of the array - O(1)
     def pop(self):
         try:
             self.validate_array()
-
             # Save the item and delete from array
             item = self.buffer[self.length - 1]
             del self.buffer[self.length - 1]
@@ -49,7 +48,7 @@ class Array:
     def insert(self, item, index):
         try:
             # If the index is last index or array is empty direct insertion
-            if (index == self.length or (index == 0 and self.length == 0)):
+            if index == self.length or (index == 0 and self.length == 0):
                 self.buffer.append(item)
                 self.length += 1
                 return self.buffer

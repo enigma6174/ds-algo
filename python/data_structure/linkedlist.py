@@ -14,25 +14,17 @@ class LinkedList:
     # Initialize the linked list head pointer
     def __init__(self):
         self.head = None
+        self.tail = None
 
     # Helper method to check if linked list is empty
     def is_empty(self):
+        return self.head is None
+
+    # Helper method to return the data at head node
+    def get_head_data(self):
         if self.head is None:
-            return True
-        else:
-            return False
-
-    # Helper method to print the linked list
-    def print_list(self):
-        if self.is_empty():
             return
-
-        # Traverse over the list
-        temp = self.head
-        while temp.next is not None:
-            print(temp.data, end=" -> ")
-            temp = temp.next
-        print(temp.data, end="\n")
+        return self.head.data
 
     # Search for a key in the linked list
     def search(self, key):
@@ -45,7 +37,8 @@ class LinkedList:
             return False
 
     # Insertion at head
-    def insert_at_head(self, node):
+    def insert_at_head(self, data):
+        node = Node(data)
         node.next = self.head
         self.head = node
 
@@ -54,7 +47,7 @@ class LinkedList:
         node = Node(data)
 
         if self.is_empty():
-            self.insert_at_head(node)
+            self.insert_at_head(data)
             return self.head
 
         # Insertion at the end of the linked list
@@ -83,12 +76,13 @@ class LinkedList:
         if not self.head:
             return
         # If only one node is present
+        data = self.head.data
         if self.head.next is None:
             self.head = None
-            return
-
+            return data
         # If more than one node present
         self.head = self.head.next
+        return data
 
     # Delete a node with given key
     def delete(self, key):
@@ -153,6 +147,18 @@ class DoublyLinkedList:
         self.head = None
         self.tail = None
 
+    # Helper method to return the data at head node
+    def get_head_data(self):
+        if self.head is None:
+            return
+        return self.head.data
+
+    # Helper method to return the data at the tail node
+    def get_tail_data(self):
+        if self.tail is None:
+            return
+        return self.tail.data
+
     # Search for a key in the linked list
     def search(self, key):
         temp = self.head
@@ -183,7 +189,7 @@ class DoublyLinkedList:
         node = Node(data)
         # If list is empty
         if self.is_empty():
-            return self.insert_empty()
+            return self.insert_empty(node)
         # Point the next of tail to current node
         self.tail.next = node
         # Adjust the tail pointer
@@ -219,11 +225,14 @@ class DoublyLinkedList:
 
     # Delete at tail
     def delete_at_tail(self):
+        data = self.tail.data
         if self.head.next is None:
             self.delete_single_node()
+            return data
         # Adjust the tail pointer for deletion
         self.tail = self.tail.prev
         self.tail.next = None
+        return data
 
     # Delete a node with key K
     def delete(self, key):
