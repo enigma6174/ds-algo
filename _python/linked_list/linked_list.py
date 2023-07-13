@@ -95,15 +95,18 @@ class LinkedList:
             self.length -= 1
             return self.head
 
+        temp = self.head
         self.head = self.head.next
+        temp.next = None
+
+        del temp
         self.length -= 1
 
         return self.head
 
     def delete_at_tail(self, mode=1):
         if self.head.next is None:
-            self.head = None
-            self.length -= 1
+            self.head = self.delete_at_head()
             return self.head
 
         # Use tail pointer to traverse to end of list
@@ -117,12 +120,14 @@ class LinkedList:
                 tail = tail.next
 
             # Traverse to second last node of list
+            # Break link between second last and last node of list
             temp = self.head
             while temp.next != tail:
                 temp = temp.next
+            temp.next = None
 
             # Delete last node
-            temp.next = None
+            del tail
             self.length -= 1
 
             return self.head
@@ -149,8 +154,7 @@ class LinkedList:
             return
 
         if self.head.data == key:
-            self.head = self.head.next
-            self.length -= 1
+            self.head = self.delete_at_head()
             return self.head
 
         # Use current pointer to traverse till next node data does not equal key
@@ -162,10 +166,11 @@ class LinkedList:
         node_to_delete = temp.next
 
         # Point current pointer to the next node of node_to_delete
-        # Delete the required node
         temp.next = node_to_delete.next
         node_to_delete.next = None
-        self.length -= 1
+
+        # Delete the required node
         del node_to_delete
+        self.length -= 1
 
         return self.head

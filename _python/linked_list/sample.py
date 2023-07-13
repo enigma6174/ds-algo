@@ -50,45 +50,44 @@ lst = LinkedList()
 insert(lst, buffer, "tail")
 ptr = lst.get_head()
 
-print_list(ptr)
-print(f"length: {lst.length}")
+print_list(ptr)  # 10 20 30 40 50 60 70 80 90 100
+print(f"length: {lst.length}")  # 10
 
 delete(lst, 5, "tail")
 
-print_list(ptr)
-print(f"length: {lst.length}")
+print_list(ptr)  # 10 20 30 40 50
+print(f"length: {lst.length}")  # 5
 
 delete(lst, 2)
 ptr = lst.get_head()
 
-print_list(ptr)
-print(f"length: {lst.length}")
+print_list(ptr)  # 30 40 50
+print(f"length: {lst.length}")  # 3
 
 insert(lst, [20, 10])
 ptr = lst.get_head()
 
-print_list(ptr)
-print(f"length: {lst.length}")
+print_list(ptr)  # 10 20 30 40 50
+print(f"length: {lst.length}")  # 5
 
 delete(lst, 3, "tail", algorithm=2)
 ptr = lst.get_head()
 
-print_list(ptr)
-print(f"length: {lst.length}")
+print_list(ptr)  # 10 20
+print(f"length: {lst.length}")  # 2
 
 delete(lst, 2, "tail", algorithm=2)
 ptr = lst.get_head()
 
-print_list(ptr)
-print(f"length: {lst.length}")
-
+print_list(ptr)  # None
+print(f"length: {lst.length}")  # 0
 print()
 
 insert(lst, buffer, "tail")
 ptr = lst.get_head()
 
-print_list(ptr)
-print(f"length:{lst.length}")
+print_list(ptr)  # 10 20 30 40 50 60 70 80 90 100
+print(f"length:{lst.length}")  # 10
 
 print()
 
@@ -98,8 +97,8 @@ delete_keys(lst, delete_buffer)
 print()
 
 ptr = lst.get_head()
-print_list(ptr)
-print(f"length: {lst.length}")
+print_list(ptr)  # 40 60 90
+print(f"length: {lst.length}")  # 3
 
 print()
 
@@ -107,6 +106,23 @@ insert(lst, [11, 121, 1331])
 insert(lst, [5, 25, 625], mode="tail")
 
 ptr = lst.get_head()
-print_list(ptr)
-print(f"length: {lst.length}")
+print_list(ptr)  # 1331 121 11 40 60 90 5 25 625
+print(f"length: {lst.length}")  # 9
+print()
 
+lst = LinkedList()
+
+insert(lst, [10, 20, 30, 40, 50], "tail")
+ptr = lst.get_head()
+
+print_list(ptr)
+print()
+
+lst.delete_at_head()
+lst.delete_at_head()
+lst.delete_at_head()
+
+new_ptr = lst.get_head()
+
+print_list(ptr)
+print_list(new_ptr)
